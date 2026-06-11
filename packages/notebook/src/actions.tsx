@@ -3033,9 +3033,11 @@ namespace Private {
         });
         return;
       }
-      if (child.model.getMetadata('editable') == false) {
+      if (
+        child.model.getMetadata('editable') == false &&
+        notebook.notebookConfig.lockCellTypeForNonEditableCells
+      ) {
         const trans = (translator ?? nullTranslator).load('jupyterlab');
-        // Do not permit changing cell type when the cell is readonly
         void showDialog({
           title: trans.__('Cell is read-only'),
           body: trans.__('The cell is read-only, its type cannot be changed!'),

@@ -1454,6 +1454,11 @@ export namespace StaticNotebook {
      * notebook’s content to help with navigation.
      */
     showMinimap?: boolean;
+
+    /**
+     * Whether to prevent changing the cell type for non-editable cells.
+     */
+    lockCellTypeForNonEditableCells?: boolean;
   }
 
   /**
@@ -1478,7 +1483,8 @@ export namespace StaticNotebook {
     windowingMode: 'contentVisibility',
     accessKernelHistory: false,
     showInputPlaceholder: true,
-    showMinimap: false
+    showMinimap: false,
+    lockCellTypeForNonEditableCells: false
   };
 
   /**
