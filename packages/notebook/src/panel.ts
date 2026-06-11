@@ -126,7 +126,8 @@ export class NotebookPanel extends DocumentWidget<Notebook, INotebookModel> {
     this.context.sessionContext.kernelPreference = {
       ...kernelPreference,
       shutdownOnDispose: config.kernelShutdown,
-      autoStartDefault: config.autoStartDefault
+      autoStartDefault: config.autoStartDefault,
+      preventKernelChangeFromMetadata: config.preventKernelChangeFromMetadata
     };
   }
 
@@ -279,6 +280,13 @@ export namespace NotebookPanel {
      * Whether to automatically start the preferred kernel
      */
     autoStartDefault: boolean;
+
+    /**
+     * Whether to prevent notebook metadata from overriding the kernel
+     * preference. When `true`, the kernelspec and language_info metadata
+     * fields are ignored when initializing the session (default `false`).
+     */
+    preventKernelChangeFromMetadata: boolean;
     /**
      * A config object for cell editors
      */

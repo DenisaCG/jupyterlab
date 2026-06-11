@@ -584,14 +584,20 @@ export class Context<
     if (this.isDisposed) {
       return;
     }
+    // Skip metadata-driven overrides when preventKernelChangeFromMetadata is set.
+    const allowMetadata =
+      !this.sessionContext.kernelPreference.preventKernelChangeFromMetadata;
     // Update the kernel preference.
-    const name =
-      this._model.defaultKernelName ||
-      this.sessionContext.kernelPreference.name;
+    const name = allowMetadata
+      ? this._model.defaultKernelName ||
+        this.sessionContext.kernelPreference.name
+      : this.sessionContext.kernelPreference.name;
     this.sessionContext.kernelPreference = {
       ...this.sessionContext.kernelPreference,
       name,
-      language: this._model.defaultKernelLanguage
+      language: allowMetadata
+        ? this._model.defaultKernelLanguage
+        : this.sessionContext.kernelPreference.language
     };
     // Note: we don't wait on the session to initialize
     // so that the user can be shown the content before

@@ -161,6 +161,12 @@ export namespace NotebookWidgetFactory {
     autoStartDefault: boolean;
 
     /**
+     * Whether to prevent notebook metadata from influencing kernel selection.
+     * When `true`, kernelspec and language_info metadata are ignored.
+     */
+    preventKernelChangeFromMetadata: boolean;
+
+    /**
      * A configuration object for cell editor settings.
      */
     editorConfig: StaticNotebook.IEditorConfig;

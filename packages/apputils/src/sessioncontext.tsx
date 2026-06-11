@@ -306,6 +306,13 @@ export namespace ISessionContext {
      * Skip showing the kernel restart dialog if checked (default `false`).
      */
     readonly skipKernelRestartDialog?: boolean;
+
+    /**
+     * Whether to prevent notebook metadata from overriding the kernel
+     * preference (default `false`). When `true`, the kernel name and language
+     * from notebook metadata are ignored when initializing the session.
+     */
+    readonly preventKernelChangeFromMetadata?: boolean;
   }
 
   export type KernelDisplayStatus =

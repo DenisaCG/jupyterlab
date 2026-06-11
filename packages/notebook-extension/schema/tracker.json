@@ -722,6 +722,12 @@
       "type": "boolean",
       "default": false
     },
+    "preventKernelChangeFromMetadata": {
+      "title": "Prevent Kernel Change from Notebook Metadata",
+      "description": "When enabled, the notebook metadata (kernelspec/language_info) will not influence kernel selection when opening a notebook.",
+      "type": "boolean",
+      "default": false
+    },
     "showInputPlaceholder": {
       "title": "Show input placeholder",
       "description": "Show placeholder text for standard input fields (requires reload)",

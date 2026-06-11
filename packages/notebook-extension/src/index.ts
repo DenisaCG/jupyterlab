@@ -2052,7 +2052,8 @@ function activateNotebookHandler(
         editorConfig: factory.editorConfig,
         notebookConfig: factory.notebookConfig,
         kernelShutdown: factory.shutdownOnClose,
-        autoStartDefault: factory.autoStartDefault
+        autoStartDefault: factory.autoStartDefault,
+        preventKernelChangeFromMetadata: factory.preventKernelChangeFromMetadata
       });
       addCommands(app, tracker, translator, sessionDialogs, null, isEnabled);
     });
@@ -2209,6 +2210,9 @@ function activateNotebookHandler(
     }
     factory.autoStartDefault = settings.get('autoStartDefaultKernel')
       .composite as boolean;
+    factory.preventKernelChangeFromMetadata = settings.get(
+      'preventKernelChangeFromMetadata'
+    ).composite as boolean;
     factory.shutdownOnClose = settings.get('kernelShutdown')
       .composite as boolean;
 
@@ -2220,7 +2224,8 @@ function activateNotebookHandler(
       editorConfig: factory.editorConfig,
       notebookConfig: factory.notebookConfig,
       kernelShutdown: factory.shutdownOnClose,
-      autoStartDefault: factory.autoStartDefault
+      autoStartDefault: factory.autoStartDefault,
+      preventKernelChangeFromMetadata: factory.preventKernelChangeFromMetadata
     });
   }
 
